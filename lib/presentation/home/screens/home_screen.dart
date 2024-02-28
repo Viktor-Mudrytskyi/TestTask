@@ -1,6 +1,8 @@
+import 'package:color_generator/presentation/home/provider/home_provider.dart';
 import 'package:color_generator/presentation/home/widgets/color_background_widget.dart';
 import 'package:color_generator/presentation/home/widgets/home_title_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Root widget for Home screen
 class HomeScreen extends StatelessWidget {
@@ -9,10 +11,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: ColorBackgroundWidget(
-        color: Colors.pink,
-        child: HomeTitleWidget(),
+    return ChangeNotifierProvider(
+      create: (context) => HomeProvider(),
+      child: Scaffold(
+        body: Consumer<HomeProvider>(
+          builder: (context, homeProvider, child) {
+            return ColorBackgroundWidget(
+              color: homeProvider.currentState.backgroundColor,
+              onTap: homeProvider.changeRandomColor,
+              child: HomeTitleWidget(
+                textColor: homeProvider.currentState.titleColor,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

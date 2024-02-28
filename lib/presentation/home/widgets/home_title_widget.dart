@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 /// Widget for displaying title on the Home screen
 class HomeTitleWidget extends StatefulWidget {
   /// Widget for displaying title on the Home screen
-  const HomeTitleWidget({super.key});
+  const HomeTitleWidget({required this.textColor, super.key});
+
+  /// Color for the text
+  final Color textColor;
 
   @override
   State<HomeTitleWidget> createState() => _HomeTitleWidgetState();
@@ -23,7 +26,7 @@ class _HomeTitleWidgetState extends State<HomeTitleWidget>
     super.initState();
     _animation = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 200),
     );
     _toggleAnimationFromStart();
   }
@@ -40,11 +43,12 @@ class _HomeTitleWidgetState extends State<HomeTitleWidget>
           child: child,
         );
       },
-      child: const Text(
+      child: Text(
         'Hello there',
         style: TextStyle(
           fontSize: 30,
           fontWeight: FontWeight.w500,
+          color: widget.textColor,
         ),
       ),
     );
