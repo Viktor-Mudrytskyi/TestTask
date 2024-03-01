@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
               color: homeProvider.currentState.backgroundColor,
               onTap: homeProvider.changeRandomColor,
               child: HomeTitleWidget(
-                textColor: homeProvider.currentState.titleColor,
+                textSpans: homeProvider.currentState.titleSpans,
               ),
             );
           },
