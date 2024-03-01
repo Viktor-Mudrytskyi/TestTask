@@ -1,12 +1,13 @@
+import 'package:color_generator/presentation/home/widgets/multi_color_text_widget.dart';
 import 'package:flutter/material.dart';
 
 /// Widget for displaying title on the Home screen
 class HomeTitleWidget extends StatefulWidget {
   /// Widget for displaying title on the Home screen
-  const HomeTitleWidget({required this.textColor, super.key});
+  const HomeTitleWidget({required this.textSpans, super.key});
 
   /// Color for the text
-  final Color textColor;
+  final List<InlineSpan> textSpans;
 
   @override
   State<HomeTitleWidget> createState() => _HomeTitleWidgetState();
@@ -43,13 +44,8 @@ class _HomeTitleWidgetState extends State<HomeTitleWidget>
           child: child,
         );
       },
-      child: Text(
-        'Hello there',
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.w500,
-          color: widget.textColor,
-        ),
+      child: MultiColorTextWidget(
+        spans: widget.textSpans,
       ),
     );
   }
